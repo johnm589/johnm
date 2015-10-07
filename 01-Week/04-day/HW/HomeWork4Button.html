@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Converter</title>
+  </head>
+  <body>
+    <h1> Temperature Converter
+    </h1>
+
+    <div id="display">
+
+
+    </div>
+
+<h2> Enter Celsius: </h2>
+    <input type= "number" id= "cel"> </input>
+<p>
+
+<button onclick="convert()">Convert </button>
+
+  <script type="text/javascript">
+
+var display = document.querySelector('#display')
+
+  function convert()
+  {
+  var c =
+  document.getElementById("cel").value;
+  display.innerText = (c *9/5+32)}
+
+  </script>
+
+</p>
+  </body>
+</html>

@@ -1,27 +1,33 @@
-console.log("--------Script Started----------");
-//Global Variables
-var result ,
-    inputValues = [],
-    operator,
-    buttons = document.getElementsByClassName('buttons'),
-    inputBox = document.getElementById('display');
+//set global variables
+var result;
+var inputValues = [];
+var operator;
+var buttons = document.getElementsByClassName('buttons');
+var inputBox = document.getElementById('display');
 
-//show the variables in the console
-console.log("Result:"+ result, "Input Values:"+inputValues,"Operator:"+operator,buttons);
+console.log("result:" + result, "input values:" + inputValues,"operator:" + operator, buttons);
 
-//create our basic functions
-function clear(){
-  result = "";
-  inputValues = [];
-  operator = "";
-  inputBox.value = "";
+function clear() {
+    result = "";
+    inputValues = [];
+    operator = "";
+    inputBox.value = "";
 }
 
-// add event listener to all buttons
-for(i=0; i<buttons.length; i++)
-{
-  buttons[i].addEventListener('click',function(){
-    inputValues.push(this.innerHTML);
-    console.log("Current values stored:",inputValues);
-  });
+//add event listener to all buttons
+for (i=0; i<buttons.length;i++) {
+    buttons[i].addEventListener('click', function() {
+        inputValues.push(this.innerHTML);
+        console.log("current values stored:" + inputValues);
+    });
+}
+
+var myArray = inputValues;
+
+
+function add() {
+    if (inputValues > 3) {
+
+    }
+    return myArray;
 }

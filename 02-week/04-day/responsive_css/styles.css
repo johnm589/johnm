@@ -5,7 +5,7 @@ body {
 }
 
 #container {
-	width:1024px;
+	max-width:1024px;
 	padding:20px;
 	margin: 0 auto;
 }
@@ -100,4 +100,27 @@ article {
 
 #copyright {
 	float: left;
+}
+/*media Queries*/
+@media (max-width:800px){
+	#navigation, #logo {
+		float:none;
+	}
+	#navigation li{
+		display:block;
+		text-align: center;
+	}
+	#sidebar{
+		width: 100%;
+		display:block;
+		float: none;
+		text-align: center;
+	}
+	#sidebar img{
+		max-width: 300px;
+	}
+	#main,#footer,#footer-navigation {
+		width:100%;
+		float:none;
+	}
 }

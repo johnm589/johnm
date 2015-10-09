@@ -3,46 +3,47 @@
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='style.css'/>
+    <title>Tony's TO DO List For Jimmy Because Jimmy Closures</title>
   </head>
   <body>
     <div class="header">
-      <h1>TO DO List</h1>
+      <h1>Jimmy's TO DO List</h1>
     </div>
     <div class="main">
       <div class="list">
         <p>
-          <input type="checkbox">
+          <input type="checkbox" class="checkboxes">
           <i class="glyphicon glyphicon-star"></i>
           <span>Brie</span>
           <i class="glyphicon glyphicon-remove"></i>
         </p>
         <p>
-          <input type="checkbox">
+          <input type="checkbox" class="checkboxes">
           <i class="glyphicon glyphicon-star"></i>
           <span>Bread</span>
           <i class="glyphicon glyphicon-remove"></i>
         </p>
         <p>
-          <input type="checkbox">
+          <input type="checkbox" class="checkboxes">
           <i class="glyphicon glyphicon-star"></i>
           <span>Sparkling Cider</span>
           <i class="glyphicon glyphicon-remove"></i>
         </p>
         <p>
-          <input type="checkbox" checked>
+          <input type="checkbox" class="checkboxes">
           <i class="glyphicon glyphicon-star"></i>
           <span>Strawberries</span>
           <i class="glyphicon glyphicon-remove"></i>
         </p>
         <p>
-          <input type="checkbox">
+          <input type="checkbox" class="checkboxes">
           <i class="glyphicon glyphicon-star"></i>
           <span>Chocolate Mousse</span>
           <i class="glyphicon glyphicon-remove"></i>
         </p>
         <p>
-          <input class="checkboxes" type="checkbox">
-          <i class="glyphicon glyphicon-star active"></i>
+          <input type="checkbox" class="checkboxes">
+          <i class="glyphicon glyphicon-star"></i>
           <span>Figs</span>
           <i class="glyphicon glyphicon-remove"></i>
         </p>
@@ -52,7 +53,7 @@
         <div class="form-container">
           <input id="todo" type="text" class="form-input" placeholder="Add item">
         </div>
-        <button type="submit" class="btn">+</button>
+        <button class="btn">+</button>
       </form>
     </div>
 
@@ -60,52 +61,3 @@
     <script src='script.js'></script>
 </body>
 </html>
-
-
-<!--JQuery to remove line
-
-use .remove()
-
-<button id="button"> </button>
-
-button.click(function() {$('header').remove})
-
-
-.parent()
-
-do this to remove parent box?
-$('#article1').parent().remove()
-
-
-
-
-
-
-$(".glyphicon-remove").click(function(){
-$(this).parent().remove();
-});
-
-
-.next()
-refers to next div
-
-var x = $('#article')
-
-use global variables
-
-if button type is 'submit', the it will refresh the page by default
-page refresh is prevented by .preventdefault()
-
-
-
-
-.append() ???
-
-.val() ???
-
-
-
-reassign variables at the end of the last button click
-
-^^need to reassign values to the new items you add because
--->

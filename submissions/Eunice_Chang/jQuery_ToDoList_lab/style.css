@@ -41,10 +41,6 @@ h1 {
   margin: 0 10px 0 10px;
 }
 
-.active {
-  color: #ffcc00;
-}
-
 .list p .glyphicon-star:hover, .list p .active {
   color: #ffcc00;
 }
@@ -52,10 +48,6 @@ h1 {
 .list p .glyphicon-remove {
   cursor: pointer;
   float: right;
-}
-
-.strikethrough {
-  text-decoration: line-through;
 }
 
 .list p .glyphicon-remove:hover {
@@ -110,4 +102,9 @@ form.form {
 .form button:hover {
   background: rgba(0,129,255,0.95);
   cursor: pointer;
+}
+
+/*toggled in js*/
+.strikethrough {
+  text-decoration: line-through;
 }

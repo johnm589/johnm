@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>domIBation</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas {
+      background:url(media/space.jpg);
+
+        display: block; margin: 0 auto;}
+    </style>
+</head>
+<body>
+<div>domIBation
+</div>
+
+<canvas id="myCanvas" width="800" height="700";></canvas>
+
+<script>
+//Canvas Stuff
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+//BallStart Position
+var x = canvas.width/10;
+var y = canvas.height-30;
+//slope
+var dx = 2;
+var dy = -2;
+//ballRadius
+var ballRadius = 15;
+//Player1
+var paddleHeight = 15;
+var paddleWidth = 100;
+var paddleX = (canvas.width-paddleWidth)/2;
+//Variables for Player 1 Key Press
+var rightPressed = false;
+var leftPressed = false;
+//BrickStuff
+var brickRowCount = 20;
+var brickColumnCount = 8;
+var brickWidth = 95;
+var brickHeight = 20;
+var brickPadding = 1;
+var brickOffsetTop = 20;
+var brickOffsetLeft = 15;
+var bricks = [];
+//Sounds
+var dominate = new Audio("media/dominating.mp3");
+var boom = new Audio("media/boom.mp3");
+var bounce = new Audio("media/bounce.mp3");
+
+//Brick Format
+
+for(c=0; c<brickColumnCount; c++) {
+    bricks[c] = [];
+    for(r=0; r<brickRowCount; r++) {
+        bricks[c][r] = { x: 0, y: 0, status: 1 };
+    }
+}
+//Brick Maker
+function drawBricks() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+          if(bricks [c][r].status == 1){
+            var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+            var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+            bricks[c][r].x = brickX;
+            bricks[c][r].y = brickY;
+            ctx.beginPath();
+            ctx.rect(brickX, brickY, brickWidth, brickHeight);
+            ctx.fillStyle = "yellow";
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+}
+}
+//Draws the Paddle
+
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+}
+//Draws the Ball
+function drawPong() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+}
+
+//draws the everything + calls other functions
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawPong();
+    drawPaddle();
+    drawBricks();
+    collisionDetection();
+    x += dx;
+    y += dy;
+
+//controls Key Movement
+if(rightPressed && paddleX < canvas.width-paddleWidth) {
+    paddleX += 7;
+}
+else if(leftPressed && paddleX > 0) {
+    paddleX -= 7;
+}
+
+//Boundry code written below
+//Top Boundry
+
+    if(y + dy < ballRadius) {
+//reverse slope (change direction)
+      dy = -dy;
+          console.log("Player 1 Wins!");
+}
+//Bottom Paddle Collison Dectection
+    else if(y + dy > canvas.height-ballRadius) {
+          if(x > paddleX && x < paddleX + paddleWidth) {
+          if(y= y-paddleHeight){
+              dy = -dy;
+              console.log("Player1 Paddle Hit")
+              bounce.play();
+			 }
+     }
+    }
+    //Bottom Boundry
+   if(y + dy > canvas.height-ballRadius) {
+        dy = -dy;
+          dominate.play();
+          console.log("Player 2 Wins!")
+          alert("Rekt");
+
+          document.location.reload();
+
+}
+//Left and Right Boundry
+if(x + dx > canvas.width-ballRadius){
+ dx = -dx;
+ console.log ("Right Wall Hit");
+    }
+    if( x + dx < ballRadius){
+      dx=-dx;
+      console.log("Left Wall Hit")
+    }
+
+
+
+
+}
+//Key Event Listener
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+function keyDownHandler(e) {
+    if(e.keyCode == 68) {
+        rightPressed = true;
+    }
+    else if(e.keyCode == 65) {
+        leftPressed = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 68) {
+        rightPressed = false;
+    }
+    else if(e.keyCode == 65) {
+        leftPressed = false;
+    }
+}
+//Brick Collison Detection
+function collisionDetection() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(b.status == 1) {
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                    dy = -dy;
+                    b.status = 0;
+                    boom.play();
+                console.log("Brick Hit by Ball 1");
+            }
+}
+
+            }}}
+//Game Speed. Lower number = Moar speed
+setInterval(draw, 2);
+
+
+
+
+//red rectangle below
+
+ // ctx.beginPath();
+ // ctx.rect(350, 450, 50, 30);
+ // ctx.fillStyle = "#FF0000";
+ // ctx.fill();
+ // ctx.closePath();
+
+
+
+
+
+
+
+//hollow rectangle below
+
+// ctx.beginPath();
+// ctx.rect(350, 40, 100, 40);
+// ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
+// ctx.stroke();
+// ctx.closePath();
+
+//green circle below
+
+// ctx.beginPath();
+// ctx.arc(350, 40, 25, 0, Math.PI*2, false);
+// ctx.fillStyle = "green";
+// ctx.fill();
+// ctx.closePath();
+</script>
+
+</body>
+</html>

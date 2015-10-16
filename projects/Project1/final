@@ -193,7 +193,7 @@ function draw() {
     drawPaddle2();
     drawBricks();
     collisionDetection();
-
+//Ball Movement
     x += dx;
     y += dy;
     x2 += dx2;
@@ -376,7 +376,8 @@ if(b.status == 1){
                 b.status = 0;
                 boom.play();
           }}}}}
-//Pause Game
+
+//Pause Game *doesnt Work
 function keyDown(e) {
   if (e.keyCode == 80) pauseGame();
 }
